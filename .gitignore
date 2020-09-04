@@ -1,0 +1,5 @@
+db.sqlite3
+accounts/__pycache__/__init__.cpython-38.pyc
+accounts/__pycache__/models.cpython-38.pyc
+employee/__pycache__/models.cpython-38.pyc
+*.pyc
