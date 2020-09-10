@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.contrib.auth.models import Group, Permission
 # Create your views here.
-
+from employee.models import Employee
 
 class SignUpView(generic.CreateView):
     form_class = PublicUserCreationForm
@@ -14,9 +14,11 @@ class SignUpView(generic.CreateView):
 
     def form_valid(self, form):
         '''adding roles while signup'''
-        print(form.instance.roles)
         user = form.save()
         group, created = Group.objects.get_or_create(name=form.instance.roles) 
         user.groups.add(group)
+        if form.instance.roles=='employee':
+            Employee.objects.create(
+             user=user)
         return super().form_valid(form)
 
