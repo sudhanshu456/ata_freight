@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row" style="padding-top: 10px;">
+    {%if user.is_authenticated %}
+    
+    <div>
+        {% if data.roles == "employee" %}
+         <a href={% url 'leave' %}><button type="button" class="btn btn-secondary"> Apply a Leave</button></a>
+    {% elif data.roles == "manager" %}<a href={% url 'approve_list' %}><button type="button" class="btn btn-light"> Approve Applications </a></button>
+    {% else %}
+<a href="/admin"><button type="button" class="btn btn-secondary"> Admin View</button></a>
+
+{% endif %}
+</div>
+{% else %}
+{% endif %}
+    {% endblock %}
