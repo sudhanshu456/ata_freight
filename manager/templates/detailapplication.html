@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ object.subject }}</h1>
+<p>{{ object.application | safe }}</p>
+<p>{{ object.start_date | safe }}</p>
+<p>{{ object.end_date | safe }}</p>
+<p>{{object.applied_on}}</p>
+<p>{{object.total_days}}</p>
+<p> Approve : {{object.approved}}</p>
+{% if object.approved %}
+{% else %}
+<a href="{% url 'approve_leave' object.id %}"><button class="btn btn-primary" type="button"> Approve Leave</button>
+{% endif %}
+{% endblock %}
