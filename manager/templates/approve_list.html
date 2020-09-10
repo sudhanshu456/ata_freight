@@ -1,0 +1,16 @@
+<h1>Approve Applications</h1>
+<ul style="list-style-type: none">
+{% for app in object_list %}
+<div style="padding-bottom:10px">
+<a href="{% url 'application_detail' app.id  %}">Application</a>
+    <li>Subject : {{ app.subject}}</li>
+    <li>Start Date : {{ app.start_date}}</li>
+    <li>End Date : {{ app.end_date}}</li>
+    <li>Applied On : {{ app.applied_on}}</li>
+    <li>Approved Status : {{ app.approved}}</li>
+    <li>Total number of Days Leave : {{ app.total_days}}</li>
+</div>
+{% empty %}
+    <li>nothing</li>
+{% endfor %}
+</ul>
