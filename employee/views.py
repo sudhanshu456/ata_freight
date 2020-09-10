@@ -13,7 +13,6 @@ from django.contrib.auth.decorators import user_passes_test,permission_required
 def create_leave(request):
     days_left=check_daysleft(request.user.id)
     users=get_object_or_404(CreateUser,email=request.user.email)
-    # user=get_object_or_404(Employee, id=request.user.id)
     form=leave_applications(instance=users)
     
     if request.method=='POST':
@@ -26,9 +25,7 @@ def create_leave(request):
             day = (d2 - d1).days
             data.total_days=days
             data.approved=False
-            # chnge=get_object_or_404(Employee,user_id=request.user.id)
-            # chnge.num_available_leave=chnge.num_available_leave- int(day)
-            # chnge.save()
+           
             data.applied_on=timezone.now()
             data.save()
             return redirect('/') #redirect('home')
